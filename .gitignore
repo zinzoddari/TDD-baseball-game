@@ -31,3 +31,5 @@ bin/
 build
 .gradle/**
 .idea/**
+.idea
+.idea/*.xml
