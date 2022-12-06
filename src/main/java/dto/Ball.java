@@ -4,11 +4,11 @@ import enums.BallStatus;
 
 public class Ball {
     private final int index;
-    private final int num;
+    private final BallNumber num;
 
     public Ball(int index, int num) {
         this.index = index;
-        this.num = num;
+        this.num = new BallNumber(num);
     }
 
     public BallStatus play(Ball ball) {
@@ -17,7 +17,7 @@ public class Ball {
         return BallStatus.NOTING;
     }
 
-    private boolean matchBallNum(int num) {
+    private boolean matchBallNum(BallNumber num) {
         return this.num == num;
     }
 

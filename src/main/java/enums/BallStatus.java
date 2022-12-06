@@ -6,4 +6,12 @@ public enum BallStatus {
     public boolean isNotNoting() {
         return this != NOTING;
     }
+
+    public boolean isStrike() {
+        return this == STRIKE;
+    }
+
+    public boolean isBall() {
+        return this == BALL;
+    }
 }
