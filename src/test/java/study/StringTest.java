@@ -22,7 +22,7 @@ public class StringTest extends NSTest {
     @Test
     void StringSplit() {
         try {
-            StringTokenizer st = new StringTokenizer("1,", ",");
+            StringTokenizer st = new StringTokenizer("1,2", ",");
             int array[] = new int[st.countTokens()];
             int index = 0;
             while (st.hasMoreTokens()) {
@@ -33,6 +33,36 @@ public class StringTest extends NSTest {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Test
+    void removeBracket() {
+        String input = "(1,2)";
+
+        if(input.indexOf('(') > -1) input = input.substring(input.indexOf('(') + 1, input.length());
+        if(input.indexOf(')') > -1) input = input.substring(0, input.indexOf(')'));
+
+        assertThat(input).isEqualTo("1,2");
+    }
+
+    @Test
+    @DisplayName("특정 위치 문자 가져오기(IndexOutOfException)")
+    void get_char_index_out_of_exception() {
+        String input = "abc";
+        int index = 10;
+
+        assertThatThrownBy(() -> input.charAt(index))
+                .isInstanceOf(IndexOutOfBoundsException.class)
+                .hasMessageContaining("Index: %d", index);
+    }
+
+    @Test
+    @DisplayName("특정 위치 문자 가져오기")
+    void get_char_index() {
+        String input = "abc";
+        int index = 2;
+
+        assertThat(input.charAt(index)).isEqualTo('c');
     }
 
     @Test
