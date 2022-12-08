@@ -6,9 +6,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.StringUtils;
 import utils.ValidationUtils;
-
-import java.util.StringTokenizer;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -20,19 +19,8 @@ public class StringTest extends NSTest {
     }
 
     @Test
-    void StringSplit() {
-        try {
-            StringTokenizer st = new StringTokenizer("1,2", ",");
-            int array[] = new int[st.countTokens()];
-            int index = 0;
-            while (st.hasMoreTokens()) {
-                array[index++] = Integer.parseInt(st.nextToken());
-            }
-
-          assertThat(array).contains(1);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    void 입력값_split으로_분리() {
+        assertThat(StringUtils.stringSplit("1,2", ",")).contains("1");
     }
 
     @Test
