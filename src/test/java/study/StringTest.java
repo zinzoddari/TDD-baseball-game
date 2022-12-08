@@ -24,13 +24,18 @@ public class StringTest extends NSTest {
     }
 
     @Test
-    void removeBracket() {
+    void 입력값_괄호_삭제() {
         String input = "(1,2)";
 
-        if(input.indexOf('(') > -1) input = input.substring(input.indexOf('(') + 1, input.length());
-        if(input.indexOf(')') > -1) input = input.substring(0, input.indexOf(')'));
+        input = StringUtils.removeFromChar(input, '(');
+        input = StringUtils.removeToChar(input, ')');
 
         assertThat(input).isEqualTo("1,2");
+    }
+
+    @Test
+    void removeBracket() {
+
     }
 
     @Test
