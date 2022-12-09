@@ -34,28 +34,21 @@ public class StringTest extends NSTest {
     }
 
     @Test
-    void removeBracket() {
-
-    }
-
-    @Test
-    @DisplayName("특정 위치 문자 가져오기(IndexOutOfException)")
-    void get_char_index_out_of_exception() {
+    void 특정_위치_문자_가져오기_IndexOutOfException() {
         String input = "abc";
         int index = 10;
 
-        assertThatThrownBy(() -> input.charAt(index))
+        assertThatThrownBy(() -> StringUtils.getCharByIndex(input, index))
                 .isInstanceOf(IndexOutOfBoundsException.class)
                 .hasMessageContaining("Index: %d", index);
     }
 
     @Test
-    @DisplayName("특정 위치 문자 가져오기")
-    void get_char_index() {
+    void 특정_위치_문자_가져오기() {
         String input = "abc";
         int index = 2;
 
-        assertThat(input.charAt(index)).isEqualTo('c');
+        assertThat(StringUtils.getCharByIndex(input, index)).isEqualTo('c');
     }
 
     @Test

@@ -27,4 +27,8 @@ public class StringUtils {
 
         return input;
     }
+
+    public static char getCharByIndex(String input, int index) {
+        return input.charAt(index);
+    }
 }
