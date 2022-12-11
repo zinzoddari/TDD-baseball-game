@@ -1,8 +1,5 @@
 package study;
 
-import dto.Ball;
-import dto.Balls;
-import dto.PlayResult;
 import enums.BallStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

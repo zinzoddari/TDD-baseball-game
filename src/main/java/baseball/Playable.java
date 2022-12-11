@@ -1,6 +1,6 @@
 package baseball;
 
-import dto.PlayResult;
+import study.PlayResult;
 
 import java.util.List;
 
