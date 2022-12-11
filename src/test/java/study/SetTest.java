@@ -49,14 +49,8 @@ public class SetTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3})
-    void set_데이터_ParameterizedTest_확인_성공(int args) {
-        assertThat(numbers.contains(args)).isTrue();
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {4, 5})
-    void set_데이터_ParameterizedTest_확인_실패(int args) {
+    @ValueSource(ints = {1, 2, 3, 4, 5})
+    void set_데이터_ParameterizedTest_확인(int args) {
         assertThat(numbers.contains(args)).isTrue();
     }
 }
