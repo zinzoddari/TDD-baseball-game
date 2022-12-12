@@ -34,4 +34,14 @@ public class BaseBallTest {
     void 낫씽_성공() {
         assertThat(computer.result(new Ball(3, 2))).isEqualTo(BallResult.NOTHING);
     }
+
+    @Test
+    void 볼_실패() {
+        assertThat(computer.result(new Ball(2, 1))).isEqualTo(BallResult.BALL);
+    }
+
+    @Test
+    void 볼_성공() {
+        assertThat(computer.result(new Ball(1, 3))).isEqualTo(BallResult.BALL);
+    }
 }

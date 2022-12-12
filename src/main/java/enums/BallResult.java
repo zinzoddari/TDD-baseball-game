@@ -10,4 +10,20 @@ public enum BallResult {
     BallResult(String result) {
         this.result = result;
     }
+
+    public boolean isNoting() {
+        return this == NOTHING;
+    }
+
+    public boolean isBall() {
+        return this == BALL;
+    }
+
+    public boolean isStrike() {
+        return this == STRIKE;
+    }
+
+    public String getResult() {
+        return this.result;
+    }
 }
