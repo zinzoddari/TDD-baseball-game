@@ -1,6 +1,7 @@
 package baseball;
 
 import domain.Ball;
+import domain.Balls;
 import enums.BallResult;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,5 +44,25 @@ public class BaseBallTest {
     @Test
     void 볼_성공() {
         assertThat(computer.result(new Ball(1, 3))).isEqualTo(BallResult.BALL);
+    }
+
+    @Test
+    void 스트라이크_실패() {
+        assertThat(computer.result(new Ball(1, 3))).isEqualTo(BallResult.STRIKE);
+    }
+
+    @Test
+    void 스트라이크_성공() {
+        assertThat(computer.result(new Ball(1, 1))).isEqualTo(BallResult.STRIKE);
+    }
+
+    @Test
+    void 볼갯수_입력_실패() {
+        Balls balls = new Balls("13");
+    }
+
+    @Test
+    void 볼갯수_입력_성공() {
+        Balls balls = new Balls("132");
     }
 }
