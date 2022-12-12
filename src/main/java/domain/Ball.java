@@ -9,8 +9,8 @@ public class Ball {
     private int index;
 
     public Ball(int number, int index) {
-        number = validateNumber(number);
-        index = validateIndex(index);
+        this.number = validateNumber(number);
+        this.index = validateIndex(index);
     }
 
     public int validateNumber(int number) {
