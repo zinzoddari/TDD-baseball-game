@@ -11,6 +11,10 @@ public enum BallResult {
         this.result = result;
     }
 
+    public boolean isNotNoting() {
+        return this != NOTHING;
+    }
+
     public boolean isNoting() {
         return this == NOTHING;
     }

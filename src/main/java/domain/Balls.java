@@ -1,5 +1,8 @@
 package domain;
 
+import enums.BallResult;
+import study.PlayResult;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,5 +28,21 @@ public class Balls {
         }
 
         return list;
+    }
+
+    public void play(Balls input) {
+        Result result = new Result();
+        for (Ball ball : input.ballList) {
+            result.report(play(ball));
+        }
+        result.result();
+    }
+
+    public BallResult play(Ball input) {
+        return ballList.stream()
+                .map(answer -> answer.result(input))
+                .filter(BallResult::isNotNoting)
+                .findFirst()
+                .orElse(BallResult.NOTHING);
     }
 }

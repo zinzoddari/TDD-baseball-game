@@ -10,10 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class BaseBallTest {
     private Ball computer;
+    private Balls comBalls;
 
     @BeforeEach
     void 초기화() {
-        computer = new Ball(1, 1);
+        //computer = new Ball(1, 1);
+        comBalls = new Balls("156");
     }
 
     @Test
@@ -64,5 +66,11 @@ public class BaseBallTest {
     @Test
     void 볼갯수_입력_성공() {
         Balls balls = new Balls("132");
+    }
+
+    @Test
+    void 볼_결과() {
+        Balls balls = new Balls("132");
+        comBalls.play(balls);
     }
 }
