@@ -15,6 +15,11 @@ public class Result {
         StringBuilder sb = new StringBuilder();
         if(strike > 0) sb.append(strike+"스트라이크 ");
         if(ball > 0) sb.append(ball+"볼");
+        if(sb.length() == 0) sb.append("낫싱");
         System.out.println(sb.toString().trim());
+    }
+
+    public boolean isGameEnd() {
+        return strike == 3;
     }
 }
