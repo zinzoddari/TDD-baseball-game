@@ -69,8 +69,38 @@ public class BaseBallTest {
     }
 
     @Test
-    void 볼_결과() {
+    void 스트라이크_1() {
         Balls balls = new Balls("132");
         comBalls.play(balls);
+    }
+
+    @Test
+    void 스트라이크_2() {
+        Balls balls = new Balls("152");
+        comBalls.play(balls);
+    }
+
+    @Test
+    void 스트라이크_3() {
+        Balls balls = new Balls("156");
+        comBalls.play(balls);
+    }
+
+    @Test
+    void 볼_1() {
+        Balls balls = new Balls("231");
+        comBalls.play(balls);
+    }
+
+    @Test
+    void 볼_2() {
+        Balls balls = new Balls("531");
+        comBalls.play(balls);
+    }
+
+    @Test
+    void 낫싱() {
+        Balls balls = new Balls("127");
+        comBalls.play(balls).result();
     }
 }
