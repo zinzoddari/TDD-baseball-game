@@ -30,12 +30,13 @@ public class Balls {
         return list;
     }
 
-    public void play(Balls input) {
+    public Result play(Balls input) {
         Result result = new Result();
         for (Ball ball : input.ballList) {
             result.report(play(ball));
         }
-        result.result();
+
+        return result;
     }
 
     public BallResult play(Ball input) {
