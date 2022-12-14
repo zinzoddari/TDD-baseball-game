@@ -1,13 +1,18 @@
 package domain;
 
 import enums.BallResult;
-import study.PlayResult;
+import nextstep.utils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
     private List<Ball> ballList;
+
+    public Balls() {
+        //TODO: 중복값에 대한 처리 필요
+        this("" + Randoms.pickNumberInRange(1, 9) + Randoms.pickNumberInRange(1, 9) + Randoms.pickNumberInRange(1, 9));
+    }
 
     public Balls(String strBall) {
         if(!validateInput(strBall)) return;
