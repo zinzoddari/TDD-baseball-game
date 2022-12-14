@@ -1,7 +1,6 @@
 package domain;
 
 import enums.BallResult;
-import nextstep.utils.Randoms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,20 +8,19 @@ import java.util.List;
 public class Balls {
     private List<Ball> ballList;
 
-    public Balls() {
-        //TODO: 중복값에 대한 처리 필요
-        this("" + Randoms.pickNumberInRange(1, 9) + Randoms.pickNumberInRange(1, 9) + Randoms.pickNumberInRange(1, 9));
-    }
-
     public Balls(String strBall) {
         if(!validateInput(strBall)) return;
 
         this.ballList = setBallList(strBall);
     }
 
+    public Balls(List<Ball> createBallList) {
+        this.ballList = createBallList;
+    }
+
     public boolean validateInput(String str) {
         if(str.length() == 3) return true;
-        else throw new IllegalArgumentException("볼은 세개가 입력되어야 합니다.");
+        throw new IllegalArgumentException("볼은 세개가 입력되어야 합니다.");
     }
 
     public List<Ball> setBallList(String str) {
@@ -51,4 +49,20 @@ public class Balls {
                 .findFirst()
                 .orElse(BallResult.NOTHING);
     }
+
+    public static Balls createBalls() {
+        List<Ball> createBallList = new ArrayList<>();
+
+        while (3 > createBallList.size()) {
+            Ball ball = Ball.createBall(createBallList.size() + 1);
+
+            if(!createBallList.contains(ball)) {
+                createBallList.add(ball);
+            }
+        }
+
+        return new Balls(createBallList);
+    }
+
+
 }

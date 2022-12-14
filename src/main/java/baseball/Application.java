@@ -10,24 +10,24 @@ public class Application {
 
     public static void main(String[] args) {
         // TODO 숫자 야구 게임 구현
-        playStart();
+        playStart("1");
 
         while (!result.isGameEnd()) {
             System.out.print("숫자를 입력해주세요:");
+
             result = computer.play(new Balls(Console.readLine()));
             result.result();
 
-            if(result.isGameEnd()) {
-                System.out.println("게임을 새로 시작하려면 1,종료하려면 2를입력하세요.");
-                if (Console.readLine().equals("1")) {
-                    playStart();
-                }
-            }
+            if(result.isGameEnd()) playStart(Console.readLine());
         }
     }
 
-    public static void playStart() {
-        result = new Result();
-        computer = new Balls();
+    public static void playStart(String answer) {
+        if(result != null && result.isGameEnd()) System.out.println("게임을 새로 시작하려면 1,종료하려면 2를입력하세요.");
+
+        if("1".equals(answer)) {
+            result = new Result();
+            computer = Balls.createBalls();
+        }
     }
 }

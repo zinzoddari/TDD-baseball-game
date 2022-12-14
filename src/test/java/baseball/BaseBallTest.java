@@ -103,4 +103,9 @@ public class BaseBallTest {
         Balls balls = new Balls("127");
         comBalls.play(balls).result();
     }
+
+    @Test
+    void ball_생성() {
+        Balls balls = Balls.createBalls();
+    }
 }
