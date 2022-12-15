@@ -3,6 +3,7 @@ package utils;
 import java.util.StringTokenizer;
 
 public class StringUtils {
+    private final static int UNDER_INDEX = -1;
 
     public static String[] stringSplit(String input, String delim) {
         StringTokenizer st = new StringTokenizer(input, delim);
@@ -17,13 +18,17 @@ public class StringUtils {
     }
 
     public static String removeFromChar(String input, char c) {
-        if(input.indexOf(c) > -1) input = input.substring(input.indexOf(c) + 1);
+        if(isContain(input, c)) input = input.substring(input.indexOf(c) + 1);
 
         return input;
     }
 
+    private static boolean isContain(String input, char c) {
+        return input.indexOf(c) > UNDER_INDEX;
+    }
+
     public static String removeToChar(String input, char c) {
-        if(input.indexOf(c) > -1) input = input.substring(0, input.indexOf(c));
+        if(isContain(input, c)) input = input.substring(0, input.indexOf(c));
 
         return input;
     }

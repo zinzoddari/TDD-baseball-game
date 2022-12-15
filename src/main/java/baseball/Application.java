@@ -23,7 +23,9 @@ public class Application {
     }
 
     public static void playStart(String answer) {
-        if(result != null && result.isGameEnd()) System.out.println("게임을 새로 시작하려면 1,종료하려면 2를입력하세요.");
+        if(result != null && result.isGameEnd()) {
+            System.out.println("게임을 새로 시작하려면 1,종료하려면 2를입력하세요.");
+        }
 
         if("1".equals(answer)) {
             result = new Result();

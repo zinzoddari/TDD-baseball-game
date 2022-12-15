@@ -1,42 +1,49 @@
 package domain;
 
 import enums.BallResult;
+import java.util.Objects;
 import nextstep.utils.Randoms;
+import study.BallNumber;
 
 public class Ball {
-    private int number;
-    private int index;
+    private BallNumber number;
+    private BallIndex index;
 
     public Ball(int number, int index) {
-        this.number = validateNumber(number);
-        this.index = validateIndex(index);
-    }
-
-    public int validateNumber(int number) {
-        if(number > 0 && 10 > number) return number;
-        throw new IllegalArgumentException("볼 숫자는 1부터 9의 값이어야한다.");
-    }
-
-    public int validateIndex(int index) {
-        if(index > 0 && 4 > index) return index;
-        throw new IllegalArgumentException("자릿수는 1부터 3의 값이어야한다.");
+        this.number = new BallNumber(number);
+        this.index = new BallIndex(index);
     }
 
     public BallResult result(Ball input) {
-        if(this.number == input.number && this.index == input.index)               return BallResult.STRIKE;
-        if(this.number == input.number) return BallResult.BALL;
+        if (Objects.equals(this, input)) {
+            return BallResult.STRIKE;
+        }
+
+        if (Objects.equals(number, input.number)) {
+            return BallResult.BALL;
+        }
+
         return BallResult.NOTHING;
+    }
+
+    public static Ball createBall(int index) {
+        return new Ball(Randoms.pickNumberInRange(BallNumber.MIN_NUM, BallNumber.MAX_NUM), index);
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Ball)) {
+            return false;
+        }
         Ball ball = (Ball) o;
-        return number == ball.number;
+        return Objects.equals(number, ball.number) && Objects.equals(index, ball.index);
     }
 
-    public static Ball createBall(int index) {
-        return new Ball(Randoms.pickNumberInRange(1, 3), index);
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, index);
     }
 }

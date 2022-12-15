@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class SetTest {
     private Set<Integer> numbers;
@@ -21,11 +22,16 @@ public class SetTest {
         numbers.add(1);
         numbers.add(2);
         numbers.add(3);
+
     }
 
-    @Test
-    void set_size_확인_실패() {
-        assertThat(StructureUtils.getSetSize(numbers)).isEqualTo(2);
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 0})
+    void set_size_확인_실패(int size) {
+
+
+        assertThat(StructureUtils.getSetSize(numbers)).isNotEqualTo(size);
     }
 
     @Test
@@ -33,23 +39,19 @@ public class SetTest {
         assertThat(StructureUtils.getSetSize(numbers)).isEqualTo(3);
     }
 
-    @Test
-    void set_데이터_확인_성공() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(3)).isTrue();
-        assertThat(numbers.contains(4)).isFalse();
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void set_데이터_확인_성공(int value) {
+        assertThat(numbers.contains(value)).isTrue();
     }
 
     @Test
     void set_데이터_확인_실패() {
-        assertThat(numbers.contains(1)).isTrue();
-        assertThat(numbers.contains(2)).isTrue();
-        assertThat(numbers.contains(4)).isTrue();
+        assertThat(numbers.contains(4)).isFalse();
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {1, 2, 3, 4, 5})
+    @ValueSource(ints = {1, 2, 3 })
     void set_데이터_ParameterizedTest_확인(int args) {
         assertThat(numbers.contains(args)).isTrue();
     }

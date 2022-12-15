@@ -1,6 +1,7 @@
 package study;
 
 import enums.BallStatus;
+import java.util.Objects;
 
 public class Ball {
     private final int index;
@@ -18,14 +19,24 @@ public class Ball {
     }
 
     private boolean matchBallNum(BallNumber num) {
-        return this.num == num;
+        return Objects.equals(this.num, num);
     }
+
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Ball)) {
+            return false;
+        }
         Ball ball = (Ball) o;
-        return index == ball.index && num == ball.num;
+        return index == ball.index && Objects.equals(num, ball.num);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index, num);
     }
 }

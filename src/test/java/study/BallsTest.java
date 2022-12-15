@@ -28,8 +28,8 @@ public class BallsTest {
     @Test
     void plat_1strike_1ball() {
         result = answers.play(Arrays.asList(1, 4, 2));
-        assertThat(result.getStrike()).isEqualTo(0);
-        assertThat(result.getBall()).isEqualTo(0);
+        assertThat(result.getStrike()).isEqualTo(1);
+        assertThat(result.getBall()).isEqualTo(1);
     }
 
     @Test
