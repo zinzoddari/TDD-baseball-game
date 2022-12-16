@@ -2,7 +2,7 @@ package enums;
 
 public enum Game {
     PLAY("1"),
-    AGAIN("2");
+    END("2");
 
     String number;
 
@@ -15,6 +15,6 @@ public enum Game {
     }
 
     public static boolean isReplay(String number) {
-        return number == Game.AGAIN.getNumber();
+        return number == Game.PLAY.getNumber();
     }
 }

@@ -4,6 +4,10 @@ import enums.BallResult;
 import nextstep.utils.Randoms;
 
 public class Ball {
+    public static final int LIMIT_MIN_BALL_NUMBER = 1;
+    public static final int LIMIT_MAX_BALL_NUMBER = 9;
+    public static final int LIMIT_MIN_BALL_INDEX = 1;
+    public static final int LIMIT_MAX_BALL_INDEX = 3;
     private int number;
     private int index;
 
@@ -13,13 +17,13 @@ public class Ball {
     }
 
     public int validateNumber(int number) {
-        if(number > 0 && 10 > number) return number;
-        throw new IllegalArgumentException("볼 숫자는 1부터 9의 값이어야한다.");
+        if(number >= LIMIT_MIN_BALL_NUMBER && LIMIT_MAX_BALL_NUMBER >= number) return number;
+        throw new IllegalArgumentException("볼 숫자는 " + LIMIT_MIN_BALL_NUMBER + "부터 " + LIMIT_MAX_BALL_NUMBER + " 의 값이어야한다.");
     }
 
     public int validateIndex(int index) {
-        if(index > 0 && 4 > index) return index;
-        throw new IllegalArgumentException("자릿수는 1부터 3의 값이어야한다.");
+        if(index >= LIMIT_MIN_BALL_INDEX && LIMIT_MAX_BALL_INDEX >= index) return index;
+        throw new IllegalArgumentException("자릿수는 " + LIMIT_MIN_BALL_INDEX + "부터 " + LIMIT_MAX_BALL_INDEX  + "의 값이어야한다.");
     }
 
     public BallResult result(Ball input) {

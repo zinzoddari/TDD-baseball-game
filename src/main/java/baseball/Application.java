@@ -1,6 +1,7 @@
 package baseball;
 
 import domain.Balls;
+import domain.Print;
 import domain.Result;
 import enums.Game;
 import nextstep.utils.Console;
@@ -14,7 +15,7 @@ public class Application {
         playStart(Game.PLAY.getNumber());
 
         while (!result.isGameEnd()) {
-            System.out.print("숫자를 입력해주세요:");
+            Print.printPrintNumber();
 
             baseballPlay(Console.readLine());
 
@@ -28,7 +29,7 @@ public class Application {
     }
 
     public static void playStart(String answer) {
-        if(result != null && result.isGameEnd()) System.out.println("게임을 새로 시작하려면 1,종료하려면 2를입력하세요.");
+        if(result != null && result.isGameEnd()) Print.printReplay();
 
         if(Game.isReplay(answer)) {
             result = new Result();
