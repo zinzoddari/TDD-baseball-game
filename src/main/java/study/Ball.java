@@ -18,7 +18,7 @@ public class Ball {
     }
 
     private boolean matchBallNum(BallNumber num) {
-        return this.num == num;
+        return this.num.equals(num);
     }
 
     @Override
@@ -26,6 +26,6 @@ public class Ball {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ball ball = (Ball) o;
-        return index == ball.index && num == ball.num;
+        return index == ball.index && num.equals(ball.num);
     }
 }

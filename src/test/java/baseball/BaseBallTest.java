@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 public class BaseBallTest {
     private Ball computer;
@@ -14,23 +15,27 @@ public class BaseBallTest {
 
     @BeforeEach
     void 초기화() {
-        //computer = new Ball(1, 1);
+        computer = new Ball(1, 1);
         comBalls = new Balls("156");
     }
 
     @Test
     void number_잘못된_숫자_입력() {
-        assertThat(computer.result(new Ball(10, 1))).isEqualTo(BallResult.NOTHING);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            computer.result(new Ball(10, 1));
+        });
     }
 
     @Test
     void index_잘못된_자릿수_입력() {
-        assertThat(computer.result(new Ball(3, 4))).isEqualTo(BallResult.NOTHING);
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            computer.result(new Ball(3, 4));
+        });
     }
 
     @Test
     void 낫씽_실패() {
-        assertThat(computer.result(new Ball(1, 1))).isEqualTo(BallResult.NOTHING);
+        assertThat(computer.result(new Ball(3, 1))).isEqualTo(BallResult.NOTHING);
     }
 
     @Test
@@ -40,7 +45,7 @@ public class BaseBallTest {
 
     @Test
     void 볼_실패() {
-        assertThat(computer.result(new Ball(2, 1))).isEqualTo(BallResult.BALL);
+        assertThat(computer.result(new Ball(2, 1))).isNotEqualTo(BallResult.BALL);
     }
 
     @Test
@@ -50,7 +55,7 @@ public class BaseBallTest {
 
     @Test
     void 스트라이크_실패() {
-        assertThat(computer.result(new Ball(1, 3))).isEqualTo(BallResult.STRIKE);
+        assertThat(computer.result(new Ball(1, 3))).isNotEqualTo(BallResult.STRIKE);
     }
 
     @Test
@@ -60,7 +65,9 @@ public class BaseBallTest {
 
     @Test
     void 볼갯수_입력_실패() {
-        Balls balls = new Balls("13");
+        assertThatIllegalArgumentException().isThrownBy(() -> {
+            Balls balls = new Balls("13");
+        });
     }
 
     @Test

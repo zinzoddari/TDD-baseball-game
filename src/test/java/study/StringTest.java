@@ -40,7 +40,7 @@ public class StringTest extends NSTest {
 
         assertThatThrownBy(() -> StringUtils.getCharByIndex(input, index))
                 .isInstanceOf(IndexOutOfBoundsException.class)
-                .hasMessageContaining("Index: %d", index);
+                .hasMessageContaining("range: %d", index);
     }
 
     @Test
