@@ -3,6 +3,8 @@ package domain;
 import enums.BallResult;
 import nextstep.utils.Randoms;
 
+import java.util.Objects;
+
 public class Ball {
     public static final int LIMIT_MIN_BALL_NUMBER = 1;
     public static final int LIMIT_MAX_BALL_NUMBER = 9;
@@ -14,6 +16,10 @@ public class Ball {
     public Ball(int number, int index) {
         this.number = validateNumber(number);
         this.index = validateIndex(index);
+    }
+
+    public static Ball createBall(int index) {
+        return new Ball(Randoms.pickNumberInRange(LIMIT_MIN_BALL_NUMBER, LIMIT_MAX_BALL_NUMBER), index);
     }
 
     public int validateNumber(int number) {
@@ -40,7 +46,8 @@ public class Ball {
         return number == ball.number;
     }
 
-    public static Ball createBall(int index) {
-        return new Ball(Randoms.pickNumberInRange(1, 3), index);
+    @Override
+    public int hashCode() {
+        return Objects.hash(number, index);
     }
 }

@@ -20,7 +20,7 @@ public class Balls {
     }
 
     public boolean validateInput(String str) {
-        if(str.length() == 3) return true;
+        if(str.length() == MAX_BALL_SIZE) return true;
         throw new IllegalArgumentException("볼은 세개가 입력되어야 합니다.");
     }
 
