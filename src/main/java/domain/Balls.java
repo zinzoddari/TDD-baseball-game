@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Balls {
+    public static final int MAX_BALL_SIZE = 3;
     private List<Ball> ballList;
 
     public Balls(String strBall) {
@@ -53,7 +54,7 @@ public class Balls {
     public static Balls createBalls() {
         List<Ball> createBallList = new ArrayList<>();
 
-        while (3 > createBallList.size()) {
+        while (MAX_BALL_SIZE > createBallList.size()) {
             Ball ball = Ball.createBall(createBallList.size() + 1);
 
             if(!createBallList.contains(ball)) {
