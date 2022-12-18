@@ -1,7 +1,7 @@
 package baseball;
 
 import domain.Balls;
-import domain.Print;
+import view.Print;
 import domain.Result;
 import enums.Game;
 import nextstep.utils.Console;

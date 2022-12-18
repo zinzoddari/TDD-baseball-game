@@ -1,6 +1,7 @@
 package domain;
 
 import enums.BallResult;
+import view.Print;
 
 public class Result {
     public static final int STRIKE_VALUE = 3;

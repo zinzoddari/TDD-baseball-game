@@ -64,6 +64,4 @@ public class Balls {
 
         return new Balls(createBallList);
     }
-
-
 }

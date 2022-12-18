@@ -13,6 +13,14 @@ public enum Game {
     public String getNumber() {
         return number;
     }
+    
+    public Game getGame(String number) {
+        for (Game game : Game.values()) {
+            return game;
+        }
+
+        return Game.END;
+    }
 
     public static boolean isReplay(String number) {
         return number.equals(Game.PLAY.getNumber());
