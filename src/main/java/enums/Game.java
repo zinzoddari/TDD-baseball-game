@@ -15,6 +15,6 @@ public enum Game {
     }
 
     public static boolean isReplay(String number) {
-        return number == Game.PLAY.getNumber();
+        return number.equals(Game.PLAY.getNumber());
     }
 }
